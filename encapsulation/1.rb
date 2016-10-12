@@ -20,16 +20,15 @@
 	# client should not be able to call the secureChat 
 
 class Message
-	def initialize
-		puts "This is a Messaging app"
-	end
-
-	# define sendPersonalMessage which calls the personalChat()
-
 	def groupChat(message)
 		puts "This is a Public Group"
 		puts message
 	end
+	
+	def sendSecureMessage
+		secureChat("This is confidential")
+	end
+
 
 	private
 	# The User should not access the secure Chat through its object--> this is confidentials
@@ -48,14 +47,6 @@ end
 
 
 class User < Message
-	def initialize
-		puts "Welcome User"
-	end
-
-	def sendSecureMessage
-		secureChat("This is confidential")
-	end
-
 	def sendPersonalMessage
 		personalChat("Hi, how are you?")
 	end
@@ -64,4 +55,6 @@ end
 
 
 client = User.new
-
+client.groupChat("Hi Friends")
+client.sendPersonalMessage
+client.sendSecureMessage
